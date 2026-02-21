@@ -1,417 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PAU HANA RP — Staff</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAU HANA RP — Staff</title>
 
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --pink:#ff4fd8;
-  --purple:#a855f7;
-  --blue:#38bdf8;
-}
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="./assets/css/shared.css">
 
-body{
-  margin:0;
-  font-family:'Orbitron',system-ui,sans-serif;
-  background:
-    radial-gradient(900px 500px at 15% 20%, rgba(56,189,248,.18), transparent 60%),
-    radial-gradient(800px 500px at 85% 25%, rgba(236,72,153,.18), transparent 60%),
-    radial-gradient(900px 600px at 50% 85%, rgba(168,85,247,.14), transparent 60%),
-    #05070d;
-  color:#e5e7eb;
-  min-height:100vh;
-}
+  <style>
+    /* =====================================================
+       STAFF PAGE — UNIQUE STYLES
+    ===================================================== */
 
-/* ================= NAV ================= */
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter:blur(12px);
-  background:rgba(6,7,11,.75);
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
+    /* Staff Section Container */
+    .staff-section {
+      max-width: 1500px;
+      margin: 80px auto;
+      padding: 32px;
+      background: var(--panel);
+      border: 1px solid var(--border-soft);
+      border-radius: 22px;
+    }
 
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 32px;
-}
+    .staff-section h2 {
+      display: inline-block;
+      padding: 10px 26px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(var(--red-rgb), 0.15);
+      border: 1px solid var(--red);
+      box-shadow: 0 0 22px rgba(var(--red-rgb), 0.6);
+    }
 
-.nav-left,
-.nav-right{
-  display:flex;
-  gap:24px;
-  align-items:center;
-}
+    .staff-section > p {
+      margin-top: 18px;
+      max-width: 900px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
 
-.nav-link{
-  position:relative;
-  font-size:15.5px;
-  font-weight:600;
-  letter-spacing:0.04em;
-  padding:.5rem .75rem;
-  color:#fff;
-  text-decoration:none;
-  opacity:.85;
-  transition:.2s ease;
-}
+    /* Staff Grid */
+    .staff-grid {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(260px, 1fr));
+      gap: 28px;
+    }
 
-.nav-link:hover,
-.nav-active{
-  opacity:1;
-}
+    @media (max-width: 1200px) {
+      .staff-grid { grid-template-columns: repeat(3, 1fr); }
+    }
 
-.nav-link:hover{
-  color:var(--pink);
-  transform:translateY(-2px);
-  text-shadow:
-    0 0 8px rgba(255,79,216,.9),
-    0 0 18px rgba(255,79,216,.8),
-    0 0 32px rgba(168,85,247,.7);
-}
+    @media (max-width: 900px) {
+      .staff-grid { grid-template-columns: repeat(2, 1fr); }
+    }
 
-.nav-link::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:2px;
-  background:var(--pink);
-  box-shadow:0 0 12px var(--pink);
-  transition:width .3s ease;
-}
+    @media (max-width: 520px) {
+      .staff-grid { grid-template-columns: 1fr; }
+    }
 
-.nav-link:hover::after,
-.nav-active::after{
-  width:100%;
-}
+    /* Staff Card */
+    .staff-card {
+      background: var(--panel-dark);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid var(--border-soft);
+      transition: 0.35s ease;
+      text-align: center;
+    }
 
-.nav-active{
-  color:var(--pink);
-}
+    .staff-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 0 45px rgba(var(--red-rgb), 0.5),
+        0 0 85px rgba(var(--gold-rgb), 0.35),
+        inset 0 0 26px rgba(var(--red-rgb), 0.2);
+    }
 
-/* NAV BUTTONS */
-.nav-btn{
-  padding:10px 18px;
-  border-radius:10px;
-  font-size:13.5px;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:#fff;
-  text-decoration:none;
-  background:linear-gradient(
-    135deg,
-    rgba(56,189,248,.25),
-    rgba(236,72,153,.25),
-    rgba(255,79,216,.25)
-  );
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 0 28px rgba(236,72,153,.45);
-  transition:.25s ease;
-}
+    /* Multi Owner Avatars */
+    .staff-images {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
 
-.nav-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 45px rgba(236,72,153,.65);
-}
+    .staff-images .staff-image {
+      width: 100px;
+      height: 100px;
+    }
 
-/* ================= STAFF ================= */
-.rule-block{
-  max-width:1500px;
-  margin:80px auto;
-  padding:32px;
-  background:rgba(10,14,22,.72);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:22px;
-}
+    .staff-image {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(var(--red-rgb), 0.4);
+      box-shadow: 0 0 22px rgba(var(--red-rgb), 0.35);
+    }
 
-.rule-block h2{
-  display:inline-block;
-  padding:10px 26px;
-  border-radius:999px;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--pink);
-  background:rgba(255,79,216,.12);
-  border:1px solid var(--pink);
-  box-shadow:0 0 22px rgba(255,79,216,.6);
-}
+    .staff-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.rule-block p{
-  margin-top:18px;
-  max-width:900px;
-  color:#9ca3af;
-  line-height:1.7;
-}
+    .staff-card h3 {
+      font-size: 15px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      color: var(--green);
+      text-shadow: 0 0 16px rgba(var(--green-rgb), 0.7);
+    }
 
-/* GRID */
-.staff-grid{
-  margin-top:40px;
-  display:grid;
-  grid-template-columns:repeat(4, minmax(260px, 1fr));
-  gap:28px;
-}
+    .staff-role {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
 
-@media(max-width:1200px){
-  .staff-grid{ grid-template-columns:repeat(3,1fr); }
-}
-@media(max-width:900px){
-  .staff-grid{ grid-template-columns:repeat(2,1fr); }
-}
-@media(max-width:520px){
-  .staff-grid{ grid-template-columns:1fr; }
-}
+    .staff-card ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
 
-.staff-card{
-  background:rgba(8,10,16,.85);
-  border-radius:20px;
-  padding:24px;
-  border:1px solid rgba(255,255,255,.08);
-  transition:.35s ease;
-  text-align:center;
-}
+    .staff-card li {
+      position: relative;
+      padding-left: 16px;
+      text-align: left;
+    }
 
-.staff-card:hover{
-  transform:translateY(-6px);
-  box-shadow:
-    0 0 36px rgba(0,255,17,.35),
-    inset 0 0 18px rgba(0,255,17,.15);
-}
+    .staff-card li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
 
-/* MULTI OWNER AVATARS */
-.staff-images{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin-bottom:16px;
-}
+    /* Apply Card */
+    .staff-apply {
+      cursor: pointer;
+    }
 
-.staff-images .staff-image{
-  width:100px;
-  height:100px;
-}
-
-.staff-image{
-  width:120px;
-  height:120px;
-  margin:0 auto 16px;
-  border-radius:50%;
-  overflow:hidden;
-  border:2px solid rgba(255,255,255,.15);
-  box-shadow:0 0 22px rgba(255,255,255,.18);
-}
-
-.staff-image img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.staff-card h3{
-  font-size:15px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  margin-bottom:6px;
-  color:#00ff11;
-  text-shadow:0 0 16px rgba(0,255,17,.7);
-}
-
-.staff-role{
-  font-size:12px;
-  letter-spacing:.14em;
-  margin-bottom:16px;
-  color:#9ca3af;
-  text-transform:uppercase;
-}
-
-.staff-card ul{
-  list-style:none;
-  padding:0;
-  display:grid;
-  gap:10px;
-}
-
-.staff-card li{
-  position:relative;
-  padding-left:16px;
-  text-align:left;
-}
-
-.staff-card li::before{
-  content:"▸";
-  position:absolute;
-  left:0;
-  color:var(--pink);
-}
-
-/* APPLY CARD */
-.staff-apply{
-  cursor:pointer;
-}
-
-/* NOTICE */
-.staff-notice{
-  margin-top:40px;
-  padding:20px 24px;
-  border-radius:16px;
-  background:rgba(12,6,8,.9);
-  border:1px solid rgba(255,0,0,.6);
-  text-align:center;
-  font-weight:700;
-  letter-spacing:.06em;
-  color:#ff3b3b;
-  text-shadow:
-    0 0 6px rgba(255,0,0,.9),
-    0 0 14px rgba(255,0,0,.9),
-    0 0 30px rgba(255,0,0,.85),
-    0 0 55px rgba(255,0,0,.75);
-}
-</style>
+    /* Warning Notice */
+    .staff-notice {
+      margin-top: 40px;
+      padding: 20px 24px;
+      border-radius: 16px;
+      background: rgba(12, 6, 8, 0.9);
+      border: 1px solid rgba(255, 0, 0, 0.6);
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #ff3b3b;
+      text-shadow:
+        0 0 6px rgba(255, 0, 0, 0.9),
+        0 0 14px rgba(255, 0, 0, 0.9),
+        0 0 30px rgba(255, 0, 0, 0.85),
+        0 0 55px rgba(255, 0, 0, 0.75);
+    }
+  </style>
 </head>
 
-<body>
+<body class="vignette">
 
-<header>
-  <nav>
-    <div class="nav-left">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="rules.html" class="nav-link">Rules</a>
-      <a href="apply.html" class="nav-link">Apply</a>
-      <a href="staff.html" class="nav-link nav-active">Staff</a>
-      <a href="changelog.html" class="nav-link">Changelog</a>
+  <!-- =====================================================
+       NAVIGATION
+  ===================================================== -->
+  <header>
+    <nav>
+      <div class="nav-left">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="rules.html" class="nav-link">Rules</a>
+        <a href="apply.html" class="nav-link">Apply</a>
+        <a href="staff.html" class="nav-link nav-active">Staff</a>
+        <a href="changelog.html" class="nav-link">Changelog</a>
+      </div>
+      <div class="nav-right">
+        <a href="https://discord.gg/pauhanarp" class="nav-btn" target="_blank">Discord</a>
+        <a href="https://pauhanarp.tebex.io" class="nav-btn" target="_blank">Tebex</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =====================================================
+       STAFF SECTION
+  ===================================================== -->
+  <section class="staff-section">
+
+    <h2>Staff Team</h2>
+    <p>The Pau Hana RP staff team is responsible for maintaining roleplay quality, enforcing rules fairly, and supporting the community.</p>
+
+    <div class="staff-grid">
+
+      <!-- Owners -->
+      <div class="staff-card">
+        <div class="staff-images">
+          <div class="staff-image"><img src="./assets/staff/owner1.jpg" alt="Owner 1"></div>
+          <div class="staff-image"><img src="./assets/staff/owner2.jpg" alt="Owner 2"></div>
+        </div>
+        <h3>Owners</h3>
+        <p class="staff-role">ZOOMシ & R!SENシ</p>
+        <ul>
+          <li>Final authority on all decisions</li>
+          <li>City vision & leadership</li>
+          <li>Oversee all departments</li>
+        </ul>
+      </div>
+
+      <!-- Co-Owner -->
+      <div class="staff-card">
+        <div class="staff-image"><img src="./assets/staff/co-owner.jpg" alt="Co-Owner"></div>
+        <h3>Co-Owner</h3>
+        <p class="staff-role">ROCK DOCTA</p>
+        <ul>
+          <li>Leadership assistance</li>
+          <li>Staff oversight</li>
+          <li>Policy enforcement</li>
+        </ul>
+      </div>
+
+      <!-- Head Developer -->
+      <div class="staff-card">
+        <div class="staff-image"><img src="./assets/staff/head-dev.png" alt="Head Developer"></div>
+        <h3>Head Developer</h3>
+        <p class="staff-role">ALI</p>
+        <ul>
+          <li>Server stability</li>
+          <li>System oversight</li>
+          <li>Technical decisions</li>
+        </ul>
+      </div>
+
+      <!-- Staff Lead -->
+      <div class="staff-card">
+        <div class="staff-image"><img src="./assets/staff/management.png" alt="Staff Lead"></div>
+        <h3>Staff Lead</h3>
+        <p class="staff-role">TIFF</p>
+        <ul>
+          <li>Staff coordination</li>
+          <li>Escalated reports</li>
+          <li>Internal enforcement</li>
+        </ul>
+      </div>
+
+      <!-- Head Admin -->
+      <div class="staff-card">
+        <div class="staff-image"><img src="./assets/staff/admin.png" alt="Head Admin"></div>
+        <h3>Head Admin</h3>
+        <p class="staff-role">FLIXLIFOX</p>
+        <ul>
+          <li>Tickets & reports</li>
+          <li>Rule enforcement</li>
+          <li>Scene moderation</li>
+        </ul>
+      </div>
+
+      <!-- Head Mod -->
+      <div class="staff-card">
+        <div class="staff-image"><img src="./assets/staff/mod.png" alt="Head Mod"></div>
+        <h3>Head Mod</h3>
+        <p class="staff-role">BARRY CADE</p>
+        <ul>
+          <li>Player support</li>
+          <li>Rule guidance</li>
+          <li>Escalation assistance</li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="staff-card">
+        <div class="staff-image"><img src="./assets/staff/support.png" alt="Support"></div>
+        <h3>Support</h3>
+        <p class="staff-role">SUPERBANANADUDE</p>
+        <ul>
+          <li>New player assistance</li>
+          <li>General questions</li>
+          <li>No punishment authority</li>
+        </ul>
+      </div>
+
+      <!-- Apply -->
+      <div class="staff-card staff-apply" onclick="window.open('https://discord.com/channels/1435318359595028644/1440790216322453534')">
+        <div class="staff-image"><img src="./assets/staff/apply.png" alt="Apply for Staff"></div>
+        <h3>Apply for Staff</h3>
+        <p class="staff-role">Discord Ticket Required</p>
+        <ul>
+          <li>Open a staff application ticket</li>
+          <li>Answer a short questionnaire</li>
+          <li>Staff review & follow-up</li>
+        </ul>
+      </div>
+
     </div>
-    <div class="nav-right">
-      <a href="https://discord.gg/pauhanarp" class="nav-btn" target="_blank">Discord</a>
-      <a href="https://pauhanarp.tebex.io" class="nav-btn" target="_blank">Tebex</a>
+
+    <div class="staff-notice">
+      Harassment, disrespect, or abuse toward staff members will result in escalated punishment.
     </div>
-  </nav>
-</header>
 
-<section class="rule-block">
+  </section>
 
-<h2>Staff Team</h2>
-<p>The Pau Hana RP staff team is responsible for maintaining roleplay quality, enforcing rules fairly, and supporting the community.</p>
-
-<div class="staff-grid">
-
-<!-- OWNERS -->
-<div class="staff-card">
-  <div class="staff-images">
-    <div class="staff-image"><img src="./assets/staff/owner1.jpg"></div>
-    <div class="staff-image"><img src="./assets/staff/owner2.jpg"></div>
+  <!-- =====================================================
+       PAGE TRANSITION
+  ===================================================== -->
+  <div id="page-transition">
+    <div class="wave"></div>
+    <div class="wave wave2"></div>
+    <img src="./assets/pauhana-logo.png" alt="PAU HANA RP" class="transition-logo">
   </div>
-  <h3>Owners</h3>
-  <p class="staff-role">ZOOMシ & R!SENシ</p>
-  <ul>
-    <li>Final authority on all decisions</li>
-    <li>City vision & leadership</li>
-    <li>Oversee all departments</li>
-  </ul>
-</div>
 
-<!-- CO OWNER -->
-<div class="staff-card">
-  <div class="staff-image"><img src="./assets/staff/co-owner.jpg"></div>
-  <h3>Co-Owner</h3>
-  <p class="staff-role">ROCK DOCTA</p>
-  <ul>
-    <li>Leadership assistance</li>
-    <li>Staff oversight</li>
-    <li>Policy enforcement</li>
-  </ul>
-</div>
-
-<!-- HEAD DEV -->
-<div class="staff-card">
-  <div class="staff-image"><img src="./assets/staff/head-dev.png"></div>
-  <h3>Head Developer</h3>
-  <p class="staff-role">ALI</p>
-  <ul>
-    <li>Server stability</li>
-    <li>System oversight</li>
-    <li>Technical decisions</li>
-  </ul>
-</div>
-
-<!-- STAFF LEAD -->
-<div class="staff-card">
-  <div class="staff-image"><img src="./assets/staff/management.png"></div>
-  <h3>Staff Lead</h3>
-  <p class="staff-role">TIFF</p>
-  <ul>
-    <li>Staff coordination</li>
-    <li>Escalated reports</li>
-    <li>Internal enforcement</li>
-  </ul>
-</div>
-
-<!-- HEAD ADMIN -->
-<div class="staff-card">
-  <div class="staff-image"><img src="./assets/staff/admin.png"></div>
-  <h3>Head Admin</h3>
-  <p class="staff-role">FLIXLIFOX</p>
-  <ul>
-    <li>Tickets & reports</li>
-    <li>Rule enforcement</li>
-    <li>Scene moderation</li>
-  </ul>
-</div>
-
-<!-- HEAD MOD -->
-<div class="staff-card">
-  <div class="staff-image"><img src="./assets/staff/mod.png"></div>
-  <h3>Head Mod</h3>
-  <p class="staff-role">BARRY CADE</p>
-  <ul>
-    <li>Player support</li>
-    <li>Rule guidance</li>
-    <li>Escalation assistance</li>
-  </ul>
-</div>
-
-<!-- SUPPORT -->
-<div class="staff-card">
-  <div class="staff-image"><img src="./assets/staff/support.png"></div>
-  <h3>Support</h3>
-  <p class="staff-role">SUPERBANANADUDE</p>
-  <ul>
-    <li>New player assistance</li>
-    <li>General questions</li>
-    <li>No punishment authority</li>
-  </ul>
-</div>
-
-<!-- APPLY -->
-<div class="staff-card staff-apply"
-onclick="window.open('https://discord.com/channels/1435318359595028644/1440790216322453534')">
-  <div class="staff-image"><img src="./assets/staff/apply.png"></div>
-  <h3>Apply for Staff</h3>
-  <p class="staff-role">Discord Ticket Required</p>
-  <ul>
-    <li>Open a staff application ticket</li>
-    <li>Answer a short questionnaire</li>
-    <li>Staff review & follow-up</li>
-  </ul>
-</div>
-
-</div>
-
-<div class="staff-notice">
-  Harassment, disrespect, or abuse toward staff members will result in escalated punishment.
-</div>
-
-</section>
+  <!-- =====================================================
+       SCRIPTS
+  ===================================================== -->
+  <script src="./assets/js/shared.js"></script>
 
 </body>
 </html>

@@ -12,43 +12,47 @@ PASTE THIS FIRST
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
+<!-- Shared Styles -->
+<link rel="stylesheet" href="./assets/css/shared.css">
+
 <style>
 /* =====================================================
    COLOR SYSTEM — CHANGE ONCE, UPDATES EVERYTHING
+   TROPICAL THEME: Red/Gold/Green
 ===================================================== */
 :root{
-  --bg:#05070d;
-  --panel:rgba(10,14,22,.72);
+  --bg:#0a0c12;
+  --panel:rgba(12,14,22,.75);
   --border-soft:rgba(255,255,255,.07);
   --text:#e5e7eb;
   --muted:#9ca3af;
 
-  /* Brand */
-  --accent-primary:#ff4fd8;
+  /* Brand - Tropical Theme */
+  --accent-primary:#cc0000;
   --accent-secondary:#00ff11;
-  --accent-tertiary:#d900ff;
+  --accent-tertiary:#ffd200;
 
   /* Semantic */
-  --hl-primary:var(--accent-primary);
+  --hl-primary:var(--accent-tertiary);
   --hl-secondary:var(--accent-secondary);
-  --hl-warning:var(--accent-tertiary);
+  --hl-warning:var(--accent-primary);
 
   /* === RULES PILL (INDEPENDENT) === */
-  --pill-bg:rgba(217,0,255,.15);
-  --pill-border:#d900ff;
-  --pill-text:#d900ff;
+  --pill-bg:rgba(204,0,0,.2);
+  --pill-border:#cc0000;
+  --pill-text:#ffd200;
 
   /* === NAV BUTTONS (INDEPENDENT) === */
-  --nav-btn-bg:rgba(255,255,255,.06);
-  --nav-btn-border:rgba(255,255,255,.14);
-  --nav-btn-glow:rgba(255,79,216,.45);
+  --nav-btn-bg:rgba(204,0,0,.15);
+  --nav-btn-border:rgba(204,0,0,.4);
+  --nav-btn-glow:rgba(204,0,0,.45);
 
   /* === NOTICE CENTER (INDEPENDENT) === */
-  --notice-bullet:#ff4fd8;
-  --notice-accent:#ff4fd8;
+  --notice-bullet:#ffd200;
+  --notice-accent:#ffd200;
   --notice-emphasis:#ff1e00;
   --notice-success:#00ff11;
-  --notice-glow:rgba(255,79,216,.6);
+  --notice-glow:rgba(255,210,0,.6);
 
   /* === NOTICE CENTER KEYWORDS (INDEPENDENT) === */
   --notice-kw-ic:#ff0000;
@@ -60,34 +64,34 @@ PASTE THIS FIRST
   --notice-kw-zero:#ff0000;
 
   /* === PANEL TITLES (INDEPENDENT) === */
-  --panel-title-bg:rgba(255,79,216,.12);
-  --panel-title-border:#ff4fd8;
-  --panel-title-text:#ffffff;
-  --panel-title-glow:rgba(255,79,216,.6);
+  --panel-title-bg:rgba(204,0,0,.15);
+  --panel-title-border:#cc0000;
+  --panel-title-text:#ffd200;
+  --panel-title-glow:rgba(204,0,0,.6);
 
   /* === NOTICE SIDE TEXT COLORS (INDEPENDENT) === */
   --notice-side-text:#9ca3af;
-  --notice-side-glow:rgba(255,79,216,.25);
+  --notice-side-glow:rgba(255,210,0,.25);
 
   /* === RULES HERO TEXT (INDEPENDENT) === */
-  --hero-title-color:#ffffff;
-  --hero-title-glow:rgb(255, 79, 217);
+  --hero-title-color:#ffd200;
+  --hero-title-glow:rgb(204, 0, 0);
 
   --hero-text-color:#ff0000;
   --hero-text-glow:rgba(247, 85, 85, 0.76);
 
   /* === TOC COLORS (INDEPENDENT) === */
-  --toc-title-color:#ff4fd8;
-  --toc-title-glow:rgba(255,79,216,.9);
+  --toc-title-color:#ffd200;
+  --toc-title-glow:rgba(255,210,0,.9);
 
   --toc-text-color:#cfd3dc;
-  --toc-text-hover:#ff4fd8;
+  --toc-text-hover:#ffd200;
 
-  --toc-active-color:#ff4fd8;
-  --toc-active-glow:rgb(255, 79, 217);
+  --toc-active-color:#ffd200;
+  --toc-active-glow:rgb(204, 0, 0);
 
-  --toc-indicator:#ff4fd8;
-  --toc-indicator-glow:rgba(255,79,216,.9);
+  --toc-indicator:#ffd200;
+  --toc-indicator-glow:rgba(255,210,0,.9);
 
   /* === OOC & IC INTERACTIONS (INDEPENDENT) === */
   --ooc-title-color:#00ff11;
@@ -134,10 +138,10 @@ PASTE THIS FIRST
   --combat-border:rgba(255,176,32,.28);
 
   /* === GUN FEAR (INDEPENDENT) === */
-  --gunfear-accent:#ff4fd8;
-  --gunfear-glow:rgba(255,79,216,.55);
+  --gunfear-accent:#ffd200;
+  --gunfear-glow:rgba(255,210,0,.55);
   --gunfear-bg:rgba(10,14,22,.72);
-  --gunfear-border:rgba(255,79,216,.28);
+  --gunfear-border:rgba(255,210,0,.28);
 
   /* === COP FEAR (INDEPENDENT) === */
   --copfear-accent:#00e0ff;
@@ -230,11 +234,11 @@ PASTE THIS FIRST
 
 /* ===== TOXICITY & RESPECT ===== */
 .toxicity-title{
-  color:#ff4fd8;
+  color:#ffd200;
   font-weight:800;
   letter-spacing:.12em;
   text-transform:uppercase;
-  text-shadow:0 0 18px rgba(0,255,17,.55);
+  text-shadow:0 0 18px rgba(204,0,0,.7);
 }
 
 .toxicity-subtitle{
@@ -250,6 +254,20 @@ PASTE THIS FIRST
   margin-top:6px;
   line-height:1.65;
   color:var(--text);
+  padding:12px 16px;
+  border-radius:12px;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.04);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.toxicity-text:hover{
+  transform: translateY(-3px);
+  border-color: rgba(0,255,17,.3);
+  box-shadow:
+    0 0 30px rgba(0,255,17,.25),
+    0 0 60px rgba(0,255,17,.15),
+    inset 0 0 18px rgba(0,255,17,.1);
 }
 
 .toxicity-divider{
@@ -275,6 +293,15 @@ PASTE THIS FIRST
   );
   border-left:4px solid #ff1e00;
   box-shadow:0 0 26px rgba(255,30,0,.35);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.zero-block:hover{
+  transform: translateY(-4px);
+  box-shadow:
+    0 0 45px rgba(255,30,0,.55),
+    0 0 90px rgba(255,30,0,.35),
+    inset 0 0 25px rgba(255,30,0,.25);
 }
 
 .zero-title{
@@ -904,8 +931,8 @@ body::after{
   width:420px;
   opacity:.045;
   filter:
-    drop-shadow(0 0 60px rgba(255,79,216,.25))
-    drop-shadow(0 0 120px rgba(56,189,248,.18));
+    drop-shadow(0 0 60px rgba(204,0,0,.3))
+    drop-shadow(0 0 120px rgba(255,210,0,.2));
 }
 
 /* ===== NAV (GLOBAL — MATCHES STAFF PAGE) ===== */
@@ -956,9 +983,9 @@ nav{
   color:var(--accent-primary);
   transform:translateY(-2px);
   text-shadow:
-    0 0 8px rgba(255,79,216,.9),
-    0 0 18px rgba(255,79,216,.8),
-    0 0 32px rgba(168,85,247,.7);
+    0 0 8px rgba(255,210,0,.9),
+    0 0 18px rgba(255,210,0,.7),
+    0 0 32px rgba(204,0,0,.5);
 }
 
 .nav-link::after{
@@ -995,19 +1022,19 @@ nav{
 
   background:linear-gradient(
     135deg,
-    rgba(56,189,248,.25),
-    rgba(236,72,153,.25),
-    rgba(255,79,216,.25)
+    rgba(204,0,0,.35),
+    rgba(255,210,0,.25),
+    rgba(255,102,0,.3)
   );
 
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 0 28px rgba(236,72,153,.45);
+  border:1px solid rgba(204,0,0,.4);
+  box-shadow:0 0 28px rgba(204,0,0,.45);
   transition:.25s ease;
 }
 
 .nav-btn:hover{
   transform:translateY(-2px);
-  box-shadow:0 0 45px rgba(236,72,153,.65);
+  box-shadow:0 0 45px rgba(204,0,0,.65);
 }
 
 /* ===== RULES HERO ===== */
@@ -1109,6 +1136,16 @@ nav{
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.06);
   line-height:1.55;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.rule-list li:hover{
+  transform: translateY(-4px);
+  border-color: rgba(204,0,0,.4);
+  box-shadow:
+    0 0 35px rgba(204,0,0,.4),
+    0 0 70px rgba(255,210,0,.25),
+    inset 0 0 20px rgba(204,0,0,.15);
 }
 .rule-list li::before{
   content:"";
@@ -1187,8 +1224,8 @@ nav{
   color:var(--hl-primary);
   text-shadow:
     0 0 8px var(--hl-primary),
-    0 0 18px rgba(255,79,216,.75),
-    0 0 32px rgba(255,79,216,.55);
+    0 0 18px rgba(255,210,0,.75),
+    0 0 32px rgba(204,0,0,.55);
 }
 .toc a.active::before{
   content:"";
@@ -1196,8 +1233,8 @@ nav{
   inset:2px 6px;
   border-radius:8px;
 
-  background:rgba(255,79,216,.08);
-  box-shadow:0 0 28px rgba(255,79,216,.35);
+  background:rgba(255,210,0,.1);
+  box-shadow:0 0 28px rgba(204,0,0,.35);
 
   z-index:-1;
 }
@@ -1214,7 +1251,7 @@ nav{
   background:var(--hl-primary);
   box-shadow:
     0 0 12px var(--hl-primary),
-    0 0 28px rgba(255,79,216,.75);
+    0 0 28px rgba(255,210,0,.75);
 
   transition:top .35s ease;
 }
@@ -2701,12 +2738,10 @@ nav{
               <span class="rule-num">8</span>
               <div>
                 Cops and cop vehicles <span class="notice-success">may be looted</span> —
-                but <span class="notice-emphasis">NOT</span> for weapons or any
-                <span class="notice-success">PD-only equipment</span>
-                (this includes MedKits).
+                but <strong style="color:#cc0000; text-transform:uppercase;">IF YOU GET ARRESTED WITH PD EQUIPMENT ON YOU, YOU WILL GET LIFE IN PRISON.</strong>
 
                 <br><br>
-                Examples of allowed loot:
+                Examples of loot:
                 <ul class="sub-bullets">
                   <li>Food</li>
                   <li>Radios</li>
@@ -2784,8 +2819,9 @@ nav{
               <div>
                 EMS are considered
                 <span class="notice-success">neutral parties</span>.
-                Targeting, kidnapping, or killing EMS without strong roleplay justification
-                is <span class="notice-emphasis">strictly prohibited</span>.
+                <strong style="color:#cc0000; text-transform:uppercase;">KILLING EMS IS A 100% BANNABLE OFFENSE WITH NO CHANCE OF APPEAL OR RETURN.</strong>
+                There is <span class="notice-emphasis">NO justification</span> for killing EMS under any circumstances.
+                This rule is strictly enforced — violators will be permanently banned.
               </div>
             </li>
 
@@ -3883,219 +3919,14 @@ nav{
 </script>
 
 <!-- PAGE TRANSITION -->
-<style>
-/* ===== PAGE TRANSITION OVERLAY ===== */
-#page-transition{
-  position:fixed;
-  inset:0;
-  background:#05070d;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .4s ease;
-  overflow:hidden;
-}
-
-/* ACTIVE STATE */
-#page-transition.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-/* LOGO */
-.transition-logo{
-  width:190px;
-  z-index:3;
-  animation:pulseGlow 1.8s infinite ease-in-out;
-}
-
-/* ===== TROPICAL WAVES ===== */
-.wave{
-  position:absolute;
-  width:200%;
-  height:200%;
-  top:-50%;
-  left:-50%;
-  background:
-    radial-gradient(circle at 30% 50%, rgba(56,189,248,.35), transparent 60%),
-    radial-gradient(circle at 70% 55%, rgba(255,79,216,.35), transparent 60%),
-    radial-gradient(circle at 50% 60%, rgba(168,85,247,.3), transparent 65%);
-  filter:blur(45px);
-  animation:waveMove 4.5s linear infinite;
-  opacity:.9;
-}
-
-.wave.wave2{
-  animation-duration:6.5s;
-  animation-direction:reverse;
-  opacity:.6;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes waveMove{
-  0%{
-    transform:translateX(0) translateY(0) rotate(0deg);
-  }
-  50%{
-    transform:translateX(-8%) translateY(6%) rotate(180deg);
-  }
-  100%{
-    transform:translateX(0) translateY(0) rotate(360deg);
-  }
-}
-
-@keyframes pulseGlow{
-  0%,100%{
-    filter:
-      drop-shadow(0 0 20px rgba(255,79,216,.75))
-      drop-shadow(0 0 40px rgba(56,189,248,.6));
-    transform:scale(1);
-  }
-  50%{
-    filter:
-      drop-shadow(0 0 36px rgba(255,79,216,1))
-      drop-shadow(0 0 70px rgba(168,85,247,.9));
-    transform:scale(1.06);
-  }
-}
-</style>
-
-<!-- TRANSITION HTML -->
 <div id="page-transition">
   <div class="wave"></div>
   <div class="wave wave2"></div>
-
-  <img
-    src="./assets/pauhana-logo.png"
-    alt="PAU HANA RP"
-    class="transition-logo"
-  />
-</div>
-<!-- PAGE TRANSITION -->
-<style>
-/* ===== PAGE TRANSITION OVERLAY ===== */
-#page-transition{
-  position:fixed;
-  inset:0;
-  background:#05070d;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .4s ease;
-  overflow:hidden;
-}
-
-/* ACTIVE STATE */
-#page-transition.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-/* LOGO */
-.transition-logo{
-  width:190px;
-  z-index:3;
-  animation:pulseGlow 1.8s infinite ease-in-out;
-}
-
-/* ===== TROPICAL WAVES ===== */
-.wave{
-  position:absolute;
-  width:200%;
-  height:200%;
-  top:-50%;
-  left:-50%;
-  background:
-    radial-gradient(circle at 30% 50%, rgba(56,189,248,.35), transparent 60%),
-    radial-gradient(circle at 70% 55%, rgba(255,79,216,.35), transparent 60%),
-    radial-gradient(circle at 50% 60%, rgba(168,85,247,.3), transparent 65%);
-  filter:blur(45px);
-  animation:waveMove 4.5s linear infinite;
-  opacity:.9;
-}
-
-.wave.wave2{
-  animation-duration:6.5s;
-  animation-direction:reverse;
-  opacity:.6;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes waveMove{
-  0%{
-    transform:translateX(0) translateY(0) rotate(0deg);
-  }
-  50%{
-    transform:translateX(-8%) translateY(6%) rotate(180deg);
-  }
-  100%{
-    transform:translateX(0) translateY(0) rotate(360deg);
-  }
-}
-
-@keyframes pulseGlow{
-  0%,100%{
-    filter:
-      drop-shadow(0 0 20px rgba(255,79,216,.75))
-      drop-shadow(0 0 40px rgba(56,189,248,.6));
-    transform:scale(1);
-  }
-  50%{
-    filter:
-      drop-shadow(0 0 36px rgba(255,79,216,1))
-      drop-shadow(0 0 70px rgba(168,85,247,.9));
-    transform:scale(1.06);
-  }
-}
-</style>
-
-<!-- TRANSITION HTML -->
-<div id="page-transition">
-  <div class="wave"></div>
-  <div class="wave wave2"></div>
-
-  <img
-    src="./assets/pauhana-logo.png"
-    alt="PAU HANA RP"
-    class="transition-logo"
-  />
+  <img src="./assets/pauhana-logo.png" alt="PAU HANA RP" class="transition-logo">
 </div>
 
-<script>
-/* ===== PAGE TRANSITION LOGIC ===== */
-const transition = document.getElementById("page-transition");
+<!-- Shared Scripts -->
+<script src="./assets/js/shared.js"></script>
 
-document.querySelectorAll("a[href]").forEach(link => {
-  if (
-    link.target === "_blank" ||
-    link.href.includes("#") ||
-    link.href.startsWith("javascript")
-  ) return;
-
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const url = link.href;
-
-    transition.classList.add("active");
-
-    setTimeout(() => {
-      window.location.href = url;
-    }, 520);
-  });
-});
-
-/* REMOVE TRANSITION AFTER LOAD */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    transition.classList.remove("active");
-  }, 320);
-});
-</script>
 </body>
 </html>

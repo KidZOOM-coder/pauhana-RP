@@ -1,367 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>PAU HANA RP</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAU HANA RP</title>
 
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
-:root{
-  --pink:#ff4fd8;
-  --purple:#a855f7;
-  --blue:#38bdf8;
-}
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="./assets/css/shared.css">
 
-body{
-  font-family:'Orbitron', system-ui, sans-serif;
-}
+  <style>
+    /* =====================================================
+       INDEX PAGE — UNIQUE STYLES
+    ===================================================== */
 
-/* === BACKGROUND === */
-.bg-tropical{
-  background:
-    radial-gradient(900px 500px at 15% 20%, rgba(56,189,248,0.18), transparent 60%),
-    radial-gradient(800px 500px at 85% 25%, rgba(236,72,153,0.18), transparent 60%),
-    radial-gradient(900px 600px at 50% 85%, rgba(168,85,247,0.14), transparent 60%),
-    #05070d;
-}
+    /* Rotating Slogan */
+    .rotating-slogan-wrapper {
+      margin-top: 18px;
+      height: 38px;
+      overflow: hidden;
+    }
 
-.vignette::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:radial-gradient(circle at center, transparent 55%, rgba(0,0,0,0.55));
-  pointer-events:none;
-  z-index:5;
-}
+    #rotating-slogan {
+      font-size: 15px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-shadow:
+        0 0 12px rgba(var(--gold-rgb), 0.9),
+        0 0 26px rgba(var(--gold-rgb), 0.75),
+        0 0 45px rgba(var(--red-rgb), 0.6);
+      transition: 0.6s ease;
+    }
 
-/* ================= NAV ================= */
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter:blur(12px);
-  background:rgba(6,7,11,.75);
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
-
-nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:18px 32px;
-}
-
-.nav-left,
-.nav-right{
-  display:flex;
-  gap:24px;
-  align-items:center;
-}
-
-.nav-link{
-  position:relative;
-  font-size:15.5px;
-  font-weight:600;
-  letter-spacing:0.04em;
-  padding:.5rem .75rem;
-  color:#fff;
-  text-decoration:none;
-  opacity:.85;
-  transition:.2s ease;
-}
-
-.nav-link:hover,
-.nav-active{
-  opacity:1;
-}
-
-.nav-link:hover{
-  color:var(--pink);
-  transform:translateY(-2px);
-  text-shadow:
-    0 0 8px rgba(255,79,216,.9),
-    0 0 18px rgba(255,79,216,.8),
-    0 0 32px rgba(168,85,247,.7);
-}
-
-.nav-link::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:2px;
-  background:var(--pink);
-  box-shadow:0 0 12px var(--pink);
-  transition:width .3s ease;
-}
-
-.nav-link:hover::after,
-.nav-active::after{
-  width:100%;
-}
-
-.nav-active{
-  color:var(--pink);
-}
-
-/* NAV BUTTONS */
-.nav-btn{
-  padding:10px 18px;
-  border-radius:10px;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:#fff;
-  text-decoration:none;
-  background:linear-gradient(
-    135deg,
-    rgba(56,189,248,.25),
-    rgba(236,72,153,.25),
-    rgba(255,79,216,.25)
-  );
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 0 28px rgba(236,72,153,.45);
-  transition:.25s ease;
-}
-
-.nav-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 45px rgba(236,72,153,.65);
-}
-
-/* === ROTATING SLOGAN === */
-.rotating-slogan-wrapper{
-  margin-top:18px;
-  height:38px;
-  overflow:hidden;
-}
-
-#rotating-slogan{
-  font-size:15px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:#ff4fd8;
-  text-shadow:
-    0 0 12px rgba(255,79,216,.9),
-    0 0 26px rgba(255,79,216,.75),
-    0 0 45px rgba(168,85,247,.6);
-  transition:.6s ease;
-}
-
-.slogan-hidden{
-  opacity:0;
-  transform:translateY(12px);
-  filter:blur(4px);
-}
-
-/* === LIFT === */
-.lift{
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-
-.lift:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 45px rgba(236,72,153,.35);
-}
-
-/* === PAGE TRANSITION OVERLAY === */
-#page-transition{
-  position:fixed;
-  inset:0;
-  background:#05070d;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .4s ease;
-  overflow:hidden;
-}
-
-#page-transition.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.transition-logo{
-  width:190px;
-  z-index:3;
-  animation:pulseGlow 1.8s infinite ease-in-out;
-}
-
-.wave{
-  position:absolute;
-  width:200%;
-  height:200%;
-  top:-50%;
-  left:-50%;
-  background:
-    radial-gradient(circle at 30% 50%, rgba(56,189,248,.35), transparent 60%),
-    radial-gradient(circle at 70% 55%, rgba(255,79,216,.35), transparent 60%),
-    radial-gradient(circle at 50% 60%, rgba(168,85,247,.3), transparent 65%);
-  filter:blur(45px);
-  animation:waveMove 5s linear infinite;
-}
-
-.wave.wave2{
-  animation-duration:7s;
-  animation-direction:reverse;
-  opacity:.6;
-}
-
-@keyframes waveMove{
-  0%{transform:rotate(0deg)}
-  100%{transform:rotate(360deg)}
-}
-
-@keyframes pulseGlow{
-  0%,100%{
-    filter:drop-shadow(0 0 30px rgba(255,79,216,.8));
-    transform:scale(1);
-  }
-  50%{
-    filter:drop-shadow(0 0 70px rgba(168,85,247,1));
-    transform:scale(1.06);
-  }
-}
-</style>
+    .slogan-hidden {
+      opacity: 0;
+      transform: translateY(12px);
+      filter: blur(4px);
+    }
+  </style>
 </head>
 
-<body class="min-h-screen bg-tropical text-slate-100 vignette">
+<body class="min-h-screen vignette">
 
-<!-- NAV -->
-<header>
-  <nav>
-    <div class="nav-left">
-      <a href="index.html" class="nav-link nav-active">Home</a>
-      <a href="rules.html" class="nav-link">Rules</a>
-      <a href="apply.html" class="nav-link">Apply</a>
-      <a href="staff.html" class="nav-link">Staff</a>
-      <a href="changelog.html" class="nav-link">Changelog</a>
+  <!-- =====================================================
+       NAVIGATION
+  ===================================================== -->
+  <header>
+    <nav>
+      <div class="nav-left">
+        <a href="index.html" class="nav-link nav-active">Home</a>
+        <a href="rules.html" class="nav-link">Rules</a>
+        <a href="apply.html" class="nav-link">Apply</a>
+        <a href="staff.html" class="nav-link">Staff</a>
+        <a href="changelog.html" class="nav-link">Changelog</a>
+      </div>
+      <div class="nav-right">
+        <a href="https://discord.gg/pauhanarp" class="nav-btn" target="_blank">Discord</a>
+        <a href="https://pauhanarp.tebex.io" class="nav-btn" target="_blank">Tebex</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =====================================================
+       HERO SECTION
+  ===================================================== -->
+  <main class="max-w-6xl mx-auto px-6 pt-28 pb-24 text-center relative z-10">
+
+    <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">
+      <span class="text-white">ALOHA!</span>
+      <span class="bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 bg-clip-text text-transparent">
+        WELCOME TO PAU HANA RP
+      </span>
+    </h1>
+
+    <div class="rotating-slogan-wrapper">
+      <span id="rotating-slogan">Clock Out. Settle In. This Is Home.</span>
     </div>
-    <div class="nav-right">
-      <a href="https://discord.gg/pauhanarp" class="nav-btn" target="_blank">Discord</a>
-      <a href="https://pauhanarp.tebex.io" class="nav-btn" target="_blank">Tebex</a>
+
+    <img 
+      src="./assets/pauhana-logo.png"
+      alt="PAU HANA RP Logo"
+      class="mx-auto w-[280px] sm:w-[340px] mt-8 mb-6 drop-shadow-[0_0_35px_rgba(204,0,0,0.55)]"
+    >
+
+    <p class="max-w-xl mx-auto text-slate-300 text-sm sm:text-base">
+      A community-driven FiveM roleplay server built around immersive stories,
+      respectful interactions, and unforgettable island nights.
+    </p>
+
+    <div class="mt-10 flex justify-center gap-4 flex-wrap">
+      <a 
+        href="https://discord.gg/pauhanarp" 
+        target="_blank"
+        class="px-6 py-3 rounded-md font-semibold bg-gradient-to-r from-yellow-500/25 via-orange-500/25 to-red-600/25 border border-red-500/30 glow-pink"
+      >
+        Join Discord
+      </a>
+      <a 
+        href="rules.html"
+        class="px-6 py-3 rounded-md font-semibold border border-white/15 hover:bg-white/5 lift"
+      >
+        View Rules
+      </a>
     </div>
-  </nav>
-</header>
 
-<!-- HERO -->
-<main class="max-w-6xl mx-auto px-6 pt-28 pb-24 text-center relative z-10">
+  </main>
 
-  <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">
-    <span class="text-white">ALOHA!</span>
-    <span class="bg-gradient-to-r from-sky-400 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
-      WELCOME TO PAU HANA RP
-    </span>
-  </h1>
+  <!-- =====================================================
+       INFO CARDS
+  ===================================================== -->
+  <section class="max-w-6xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-8 relative z-10">
 
-  <div class="rotating-slogan-wrapper">
-    <span id="rotating-slogan">Clock Out. Settle In. This Is Home.</span>
-  </div>
-
-  <img src="./assets/pauhana-logo.png"
-       class="mx-auto w-[260px] sm:w-[300px] mt-8 mb-6 drop-shadow-[0_0_35px_rgba(236,72,153,0.55)]">
-
-  <p class="max-w-xl mx-auto text-slate-300 text-sm sm:text-base">
-    A community-driven FiveM roleplay server built around immersive stories,
-    respectful interactions, and unforgettable island nights.
-  </p>
-
-  <div class="mt-10 flex justify-center gap-4 flex-wrap">
-    <a href="https://discord.gg/pauhanarp" target="_blank"
-       class="px-6 py-3 rounded-md font-semibold bg-gradient-to-r from-sky-400/25 via-fuchsia-500/25 to-pink-500/25 border border-white/10 lift">
-      Join Discord
+    <a 
+      href="https://discord.gg/pauhanarp" 
+      target="_blank"
+      class="glow-pink rounded-xl border border-white/10 bg-white/5 p-10 text-center block"
+    >
+      <h3 class="text-xl font-semibold mb-2">Join Our Discord</h3>
+      <p class="text-slate-300 text-sm">
+        Announcements, applications, and community discussion.
+      </p>
     </a>
-    <a href="rules.html"
-       class="px-6 py-3 rounded-md font-semibold border border-white/15 hover:bg-white/5 lift">
-      View Rules
+
+    <a 
+      href="https://pauhanarp.tebex.io" 
+      target="_blank"
+      class="glow-pink rounded-xl border border-white/10 bg-white/5 p-10 text-center block"
+    >
+      <h3 class="text-xl font-semibold mb-2">Support the Server</h3>
+      <p class="text-slate-300 text-sm">
+        Visit our Tebex store to help keep the city running.
+      </p>
     </a>
+
+  </section>
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+  <footer>
+    <div class="footer-content">
+      <span>© <span id="year"></span> PAU HANA RP</span>
+      <span>Thank you for choosing Pau Hana RP as your home.</span>
+    </div>
+  </footer>
+
+  <!-- =====================================================
+       PAGE TRANSITION
+  ===================================================== -->
+  <div id="page-transition">
+    <div class="wave"></div>
+    <div class="wave wave2"></div>
+    <img src="./assets/pauhana-logo.png" alt="PAU HANA RP" class="transition-logo">
   </div>
 
-</main>
-
-<!-- CLICKABLE CARDS -->
-<section class="max-w-6xl mx-auto px-6 pb-24 grid md:grid-cols-2 gap-8 relative z-10">
-
-  <a href="https://discord.gg/pauhanarp" target="_blank"
-     class="lift rounded-xl border border-white/10 bg-white/5 p-10 text-center block">
-    <h3 class="text-xl font-semibold mb-2">Join Our Discord</h3>
-    <p class="text-slate-300 text-sm">
-      Announcements, applications, and community discussion.
-    </p>
-  </a>
-
-  <a href="https://pauhanarp.tebex.io" target="_blank"
-     class="lift rounded-xl border border-white/10 bg-white/5 p-10 text-center block">
-    <h3 class="text-xl font-semibold mb-2">Support the Server</h3>
-    <p class="text-slate-300 text-sm">
-      Visit our Tebex store to help keep the city running.
-    </p>
-  </a>
-
-</section>
-
-<footer class="border-t border-white/5 relative z-10">
-  <div class="max-w-6xl mx-auto px-6 py-10 text-sm text-slate-400 flex justify-between">
-    <span>© <span id="year"></span> PAU HANA RP</span>
-    <span>Thank you for choosing Pau Hana RP as your home.</span>
-  </div>
-</footer>
-
-<!-- TRANSITION -->
-<div id="page-transition">
-  <div class="wave"></div>
-  <div class="wave wave2"></div>
-  <img src="./assets/pauhana-logo.png" class="transition-logo">
-</div>
-
-<script>
-document.getElementById("year").textContent = new Date().getFullYear();
-
-const slogans = [
-  "Clock Out. Settle In. This Is Home.",
-  "Where Island Vibes Meet Real Roleplay.",
-  "No Rush. No Grind. Just Good RP.",
-  "More Than a City — It’s a Home.",
-  "Your Pace. Your Story. Your City."
-];
-
-let i = 0;
-const el = document.getElementById("rotating-slogan");
-
-setInterval(() => {
-  el.classList.add("slogan-hidden");
-  setTimeout(() => {
-    i = (i + 1) % slogans.length;
-    el.textContent = slogans[i];
-    el.classList.remove("slogan-hidden");
-  }, 600);
-}, 3500);
-
-const transition = document.getElementById("page-transition");
-document.querySelectorAll("a[href]").forEach(link => {
-  if (link.target === "_blank") return;
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    transition.classList.add("active");
-    setTimeout(() => window.location.href = link.href, 520);
-  });
-});
-
-window.addEventListener("load", () => {
-  setTimeout(() => transition.classList.remove("active"), 300);
-});
-</script>
+  <!-- =====================================================
+       SCRIPTS
+  ===================================================== -->
+  <script src="./assets/js/shared.js"></script>
+  <script>
+    // Initialize rotating slogan
+    const slogans = [
+      "Clock Out. Settle In. This Is Home.",
+      "Where Island Vibes Meet Real Roleplay.",
+      "No Rush. No Grind. Just Good RP.",
+      "More Than a City — It's a Home.",
+      "Your Pace. Your Story. Your City."
+    ];
+    initRotatingSlogan(slogans);
+  </script>
 
 </body>
 </html>

@@ -1,396 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PAU HANA RP — Changelog</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAU HANA RP — Changelog</title>
 
-<!-- Font -->
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --pink:#ff4fd8;
-  --purple:#a855f7;
-  --blue:#38bdf8;
-  --green:#00ff11;
-}
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="./assets/css/shared.css">
 
-body{
-  margin:0;
-  font-family:'Orbitron',system-ui,sans-serif;
-  background:
-    radial-gradient(900px 500px at 15% 20%, rgba(56,189,248,.18), transparent 60%),
-    radial-gradient(800px 500px at 85% 25%, rgba(236,72,153,.18), transparent 60%),
-    radial-gradient(900px 600px at 50% 85%, rgba(168,85,247,.14), transparent 60%),
-    #05070d;
-  color:#e5e7eb;
-  min-height:100vh;
-}
+  <style>
+    /* =====================================================
+       CHANGELOG PAGE — UNIQUE STYLES
+    ===================================================== */
 
-/* ================= NAV ================= */
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter:blur(12px);
-  background:rgba(6,7,11,.75);
-  border-bottom:1px solid rgba(255,255,255,.05);
-}
+    /* Changelog Block Container */
+    .changelog-block {
+      max-width: 1100px;
+      margin: 90px auto;
+      padding: 36px;
+      background: var(--panel);
+      border: 1px solid var(--border-soft);
+      border-radius: 22px;
+      transition: 0.4s ease;
+    }
 
-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:18px 32px;
-}
+    .changelog-block:hover {
+      box-shadow:
+        0 0 45px rgba(var(--red-rgb), 0.5),
+        0 0 90px rgba(var(--gold-rgb), 0.35),
+        inset 0 0 35px rgba(var(--red-rgb), 0.2);
+    }
 
-.nav-left,
-.nav-right{
-  display:flex;
-  gap:24px;
-  align-items:center;
-}
+    .changelog-block h2 {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 999px;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(var(--red-rgb), 0.15);
+      border: 1px solid var(--red);
+      box-shadow: 0 0 28px rgba(var(--red-rgb), 0.6);
+    }
 
-.nav-link{
-  position:relative;
-  font-size:15.5px;
-  font-weight:600;
-  letter-spacing:.04em;
-  padding:.5rem .75rem;
-  color:#fff;
-  text-decoration:none;
-  opacity:.85;
-  transition:.2s ease;
-}
+    .changelog-block > p {
+      margin-top: 20px;
+      max-width: 850px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
 
-.nav-link:hover,
-.nav-active{ opacity:1; }
+    /* Hold Card */
+    .changelog-hold {
+      margin-top: 42px;
+      padding: 40px 36px;
+      border-radius: 22px;
+      background: var(--panel-dark);
+      border: 1px solid var(--border-light);
+      text-align: center;
+      transition: 0.4s ease;
+    }
 
-.nav-link:hover{
-  color:var(--pink);
-  transform:translateY(-2px);
-  text-shadow:
-    0 0 8px rgba(255,79,216,.9),
-    0 0 18px rgba(255,79,216,.8),
-    0 0 32px rgba(168,85,247,.7);
-}
+    .changelog-hold:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 0 60px rgba(var(--red-rgb), 0.55),
+        0 0 120px rgba(var(--gold-rgb), 0.45),
+        inset 0 0 45px rgba(var(--red-rgb), 0.3);
+    }
 
-.nav-link::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:2px;
-  background:var(--pink);
-  box-shadow:0 0 12px var(--pink);
-  transition:width .3s ease;
-}
+    .changelog-hold h3 {
+      font-size: 20px;
+      letter-spacing: 0.18em;
+      margin-bottom: 16px;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-shadow:
+        0 0 18px rgba(var(--gold-rgb), 0.9),
+        0 0 36px rgba(var(--gold-rgb), 0.7);
+    }
 
-.nav-link:hover::after,
-.nav-active::after{ width:100%; }
+    .changelog-hold p {
+      color: #d1d5db;
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-.nav-active{
-  color:var(--pink);
-}
+    /* Notice Banner */
+    .changelog-notice {
+      margin-top: 36px;
+      padding: 22px 26px;
+      border-radius: 18px;
+      background: rgba(6, 8, 12, 0.9);
+      border: 1px solid rgba(var(--green-rgb), 0.55);
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      transition: 0.4s ease;
+      text-shadow:
+        0 0 12px rgba(var(--green-rgb), 1),
+        0 0 28px rgba(var(--green-rgb), 0.9),
+        0 0 55px rgba(var(--green-rgb), 0.8);
+    }
 
-/* NAV BUTTONS */
-.nav-btn{
-  padding:10px 18px;
-  border-radius:10px;
-  font-size:13.5px;
-  font-weight:700;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:#fff;
-  text-decoration:none;
-  background:linear-gradient(
-    135deg,
-    rgba(56,189,248,.25),
-    rgba(236,72,153,.25),
-    rgba(255,79,216,.25)
-  );
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 0 28px rgba(236,72,153,.45);
-  transition:.25s ease;
-}
-
-.nav-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 55px rgba(236,72,153,.8);
-}
-
-/* ================= CHANGELOG ================= */
-.changelog-block{
-  max-width:1100px;
-  margin:90px auto;
-  padding:36px;
-  background:rgba(10,14,22,.72);
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:22px;
-  transition:.4s ease;
-}
-
-/* 🔥 EXTRAVAGANT HOVER */
-.changelog-block:hover{
-  box-shadow:
-    0 0 45px rgba(255,79,216,.45),
-    0 0 90px rgba(168,85,247,.35),
-    inset 0 0 35px rgba(255,79,216,.25);
-}
-
-.changelog-block h2{
-  display:inline-block;
-  padding:12px 30px;
-  border-radius:999px;
-  font-size:20px;
-  font-weight:800;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--pink);
-  background:rgba(255,79,216,.12);
-  border:1px solid var(--pink);
-  box-shadow:0 0 28px rgba(255,79,216,.8);
-}
-
-.changelog-block p{
-  margin-top:20px;
-  max-width:850px;
-  color:#9ca3af;
-  line-height:1.7;
-}
-
-/* HOLD CARD */
-.changelog-hold{
-  margin-top:42px;
-  padding:40px 36px;
-  border-radius:22px;
-  background:rgba(8,10,16,.9);
-  border:1px solid rgba(255,255,255,.1);
-  text-align:center;
-  transition:.4s ease;
-}
-
-/* 🔥 ULTRA GLOW */
-.changelog-hold:hover{
-  transform:translateY(-6px);
-  box-shadow:
-    0 0 60px rgba(255,79,216,.55),
-    0 0 120px rgba(168,85,247,.45),
-    inset 0 0 45px rgba(255,79,216,.35);
-}
-
-.changelog-hold h3{
-  font-size:20px;
-  letter-spacing:.18em;
-  margin-bottom:16px;
-  color:#ff4fd8;
-  text-transform:uppercase;
-  text-shadow:
-    0 0 18px rgba(255,79,216,.9),
-    0 0 36px rgba(255,79,216,.7);
-}
-
-.changelog-hold p{
-  color:#d1d5db;
-  max-width:700px;
-  margin:0 auto;
-}
-
-/* NOTICE */
-.changelog-notice{
-  margin-top:36px;
-  padding:22px 26px;
-  border-radius:18px;
-  background:rgba(6,8,12,.9);
-  border:1px solid rgba(0,255,17,.55);
-  text-align:center;
-  font-weight:800;
-  letter-spacing:.08em;
-  color:var(--green);
-  transition:.4s ease;
-  text-shadow:
-    0 0 12px rgba(0,255,17,1),
-    0 0 28px rgba(0,255,17,.9),
-    0 0 55px rgba(0,255,17,.8);
-}
-
-/* 🔥 NOTICE GLOW */
-.changelog-notice:hover{
-  box-shadow:
-    0 0 45px rgba(0,255,17,.6),
-    inset 0 0 28px rgba(0,255,17,.4);
-}
-</style>
+    .changelog-notice:hover {
+      box-shadow:
+        0 0 45px rgba(var(--green-rgb), 0.6),
+        inset 0 0 28px rgba(var(--green-rgb), 0.4);
+    }
+  </style>
 </head>
 
-<body>
+<body class="vignette">
 
-<!-- NAV -->
-<header>
-  <nav>
-    <div class="nav-left">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="rules.html" class="nav-link">Rules</a>
-      <a href="apply.html" class="nav-link">Apply</a>
-      <a href="staff.html" class="nav-link">Staff</a>
-      <a href="changelog.html" class="nav-link nav-active">Changelog</a>
-    </div>
+  <!-- =====================================================
+       NAVIGATION
+  ===================================================== -->
+  <header>
+    <nav>
+      <div class="nav-left">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="rules.html" class="nav-link">Rules</a>
+        <a href="apply.html" class="nav-link">Apply</a>
+        <a href="staff.html" class="nav-link">Staff</a>
+        <a href="changelog.html" class="nav-link nav-active">Changelog</a>
+      </div>
+      <div class="nav-right">
+        <a href="https://discord.gg/pauhanarp" class="nav-btn" target="_blank">Discord</a>
+        <a href="https://pauhanarp.tebex.io" class="nav-btn" target="_blank">Tebex</a>
+      </div>
+    </nav>
+  </header>
 
-    <div class="nav-right">
-      <a href="https://discord.gg/pauhanarp" class="nav-btn" target="_blank">Discord</a>
-      <a href="https://pauhanarp.tebex.io" class="nav-btn" target="_blank">Tebex</a>
-    </div>
-  </nav>
-</header>
+  <!-- =====================================================
+       CHANGELOG SECTION
+  ===================================================== -->
+  <section class="changelog-block">
 
-<!-- CHANGELOG -->
-<section class="changelog-block">
+    <h2>Changelog</h2>
 
-  <h2>Changelog</h2>
-
-  <p>
-    This page documents all major changes, fixes, additions, and balance updates
-    made to Pau Hana RP. Transparency and communication are important to us.
-  </p>
-
-  <div class="changelog-hold">
-    <h3>Changelog Updates Resuming Soon</h3>
     <p>
-      The Pau Hana RP development team will begin publishing detailed changelog
-      entries after the New Year. Major systems, performance improvements, and
-      content updates are currently being finalized behind the scenes.
+      This page documents all major changes, fixes, additions, and balance updates
+      made to Pau Hana RP. Transparency and communication are important to us.
     </p>
+
+    <div class="changelog-hold">
+      <h3>Changelog Updates Resuming Soon</h3>
+      <p>
+        The Pau Hana RP development team will begin publishing detailed changelog
+        entries after the New Year. Major systems, performance improvements, and
+        content updates are currently being finalized behind the scenes.
+      </p>
+    </div>
+
+    <div class="changelog-notice">
+      CHANGELOG TRACKING WILL RESUME AFTER THE NEW YEAR
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+       PAGE TRANSITION
+  ===================================================== -->
+  <div id="page-transition">
+    <div class="wave"></div>
+    <div class="wave wave2"></div>
+    <img src="./assets/pauhana-logo.png" alt="PAU HANA RP" class="transition-logo">
   </div>
 
-  <div class="changelog-notice">
-    CHANGELOG TRACKING WILL RESUME AFTER THE NEW YEAR
-  </div>
+  <!-- =====================================================
+       SCRIPTS
+  ===================================================== -->
+  <script src="./assets/js/shared.js"></script>
 
-</section>
-<!-- PAGE TRANSITION -->
-<style>
-/* ===== PAGE TRANSITION OVERLAY ===== */
-#page-transition{
-  position:fixed;
-  inset:0;
-  background:#05070d;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  pointer-events:none;
-  opacity:0;
-  transition:opacity .4s ease;
-  overflow:hidden;
-}
-
-/* ACTIVE STATE */
-#page-transition.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-/* LOGO */
-.transition-logo{
-  width:190px;
-  z-index:3;
-  animation:pulseGlow 1.8s infinite ease-in-out;
-}
-
-/* ===== TROPICAL WAVES ===== */
-.wave{
-  position:absolute;
-  width:200%;
-  height:200%;
-  top:-50%;
-  left:-50%;
-  background:
-    radial-gradient(circle at 30% 50%, rgba(56,189,248,.35), transparent 60%),
-    radial-gradient(circle at 70% 55%, rgba(255,79,216,.35), transparent 60%),
-    radial-gradient(circle at 50% 60%, rgba(168,85,247,.3), transparent 65%);
-  filter:blur(45px);
-  animation:waveMove 4.5s linear infinite;
-  opacity:.9;
-}
-
-.wave.wave2{
-  animation-duration:6.5s;
-  animation-direction:reverse;
-  opacity:.6;
-}
-
-/* ===== ANIMATIONS ===== */
-@keyframes waveMove{
-  0%{
-    transform:translateX(0) translateY(0) rotate(0deg);
-  }
-  50%{
-    transform:translateX(-8%) translateY(6%) rotate(180deg);
-  }
-  100%{
-    transform:translateX(0) translateY(0) rotate(360deg);
-  }
-}
-
-@keyframes pulseGlow{
-  0%,100%{
-    filter:
-      drop-shadow(0 0 20px rgba(255,79,216,.75))
-      drop-shadow(0 0 40px rgba(56,189,248,.6));
-    transform:scale(1);
-  }
-  50%{
-    filter:
-      drop-shadow(0 0 36px rgba(255,79,216,1))
-      drop-shadow(0 0 70px rgba(168,85,247,.9));
-    transform:scale(1.06);
-  }
-}
-</style>
-
-<!-- TRANSITION HTML -->
-<div id="page-transition">
-  <div class="wave"></div>
-  <div class="wave wave2"></div>
-
-  <img
-    src="./assets/pauhana-logo.png"
-    alt="PAU HANA RP"
-    class="transition-logo"
-  />
-</div>
-
-<script>
-/* ===== PAGE TRANSITION LOGIC ===== */
-const transition = document.getElementById("page-transition");
-
-document.querySelectorAll("a[href]").forEach(link => {
-  if (
-    link.target === "_blank" ||
-    link.href.includes("#") ||
-    link.href.startsWith("javascript")
-  ) return;
-
-  link.addEventListener("click", e => {
-    e.preventDefault();
-    const url = link.href;
-
-    transition.classList.add("active");
-
-    setTimeout(() => {
-      window.location.href = url;
-    }, 520);
-  });
-});
-
-/* REMOVE TRANSITION AFTER LOAD */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    transition.classList.remove("active");
-  }, 320);
-});
-</script>
 </body>
 </html>
