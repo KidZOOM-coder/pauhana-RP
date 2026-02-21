@@ -2052,12 +2052,9 @@ nav{
        rel="noopener noreferrer">
       Discord
     </a>
-    <a href="https://pauhanarp.tebex.io"
-       class="nav-btn"
-       target="_blank"
-       rel="noopener noreferrer">
-      Tebex
-    </a>
+    <button class="nav-btn" onclick="openSupportModal()">
+      Support
+    </button>
   </div>
 </nav>
   </header>
@@ -4005,6 +4002,46 @@ nav{
   });
 </script>
 
+<!-- Support Modal -->
+<div id="supportModal" class="support-modal">
+  <div class="support-modal-content">
+    <div class="support-modal-header">
+      <h2>SUPPORT</h2>
+      <span class="support-close" onclick="closeSupportModal()">&times;</span>
+    </div>
+
+    <div class="support-grid">
+      <!-- 1 of 1 Item Card -->
+      <div class="support-card" onclick="window.open('https://discord.gg/pauhanarp', '_blank')">
+        <h3>1 OF 1 ITEM</h3>
+        <p>
+          Purchase exclusive one-of-a-kind items from our collection. Each item is unique and carefully curated for our community.
+        </p>
+      </div>
+
+      <!-- Pau Hana Supporter Card -->
+      <div class="support-card" onclick="window.open('https://discord.gg/pauhanarp', '_blank')">
+        <h3>PAU HANA SUPPORTER</h3>
+        <p>
+          Support the server and gain exclusive perks, cosmetics, and recognition within the community.
+        </p>
+      </div>
+
+      <!-- Donate Card -->
+      <div class="support-card" onclick="window.open('https://paypal.me/kidzoom67', '_blank')">
+        <h3>DONATE</h3>
+        <p>
+          Help keep Pau Hana RP running smoothly. Every donation goes towards server maintenance and new features.
+        </p>
+      </div>
+    </div>
+
+    <div class="support-disclaimer">
+      ⚠️ <strong>IMPORTANT:</strong> Please create a ticket in the Discord support channel BEFORE making any purchase. This ensures you receive your items correctly and our team can assist you properly.
+    </div>
+  </div>
+</div>
+
 <!-- PAGE TRANSITION -->
 <div id="page-transition">
   <div class="wave"></div>
@@ -4014,6 +4051,22 @@ nav{
 
 <!-- Shared Scripts -->
 <script src="./assets/js/shared.js"></script>
+<script>
+  function openSupportModal() {
+    document.getElementById('supportModal').style.display = 'block';
+  }
+
+  function closeSupportModal() {
+    document.getElementById('supportModal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('supportModal');
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
+</script>
 
 </body>
 </html>

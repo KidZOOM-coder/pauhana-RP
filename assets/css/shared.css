@@ -177,6 +177,20 @@ nav {
     0 0 25px rgba(var(--gold-rgb), 0.4);
 }
 
+/* Nav Button as element (for buttons) */
+.nav-btn[onclick] {
+  font-family: 'Orbitron', system-ui, sans-serif;
+  border: 1px solid rgba(var(--red-rgb), 0.4);
+  cursor: pointer;
+}
+
+.nav-btn[onclick]:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 45px rgba(var(--red-rgb), 0.65),
+    0 0 25px rgba(var(--gold-rgb), 0.4);
+}
+
 /* =====================================================
    STANDARD HOVER GLOW EFFECTS
 ===================================================== */
